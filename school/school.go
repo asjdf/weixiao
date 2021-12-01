@@ -1,9 +1,9 @@
 package school
 
 type Config struct {
-	AppKey          string
-	AppSecret       string
-	Ocode           string
+	AppKey    string
+	AppSecret string
+	Ocode     string
 }
 
 type School struct {

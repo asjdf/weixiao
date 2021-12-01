@@ -37,7 +37,6 @@ type ResAccessToken struct {
 	ExpiresIn   int    `json:"expires_in"` // 有效期 单位s
 }
 
-
 // DefaultAccessToken 默认AccessToken 获取
 type DefaultAccessToken struct {
 	appKey          string

@@ -15,7 +15,7 @@ func TestSchool(t *testing.T) {
 	sch := school.NewSchool(&cfg)
 
 	// 生成主动更新卡数据的请求
-	req := sch.NewCardInfoUpdateReq("balance").AddData("cardNum","1")
+	req := sch.NewCardInfoUpdateReq("balance").AddData("cardNum", "1")
 	// 主动更新卡数据
 	err := sch.CardInfoUpdate(req)
 	if err != nil {
