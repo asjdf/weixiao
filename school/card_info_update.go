@@ -62,7 +62,6 @@ func (s *School) CardInfoUpdate(r *ReqCardInfoUpdate) (err error) {
 	r.Timestamp = strconv.FormatInt(time.Now().Unix(), 10)
 
 	rByte, _ := json.Marshal(r)
-	fmt.Println(string(rByte))
 	encrypt := s.CBCEncrypter(rByte)
 	if err != nil {
 		return

@@ -12,17 +12,12 @@ import (
 func (s *School) CBCEncrypter(text []byte) string {
 	key := []byte(s.conf.AppKey)
 	iv := []byte(s.conf.AppSecret[:16])
-	fmt.Println(string(iv))
 	block, err := aes.NewCipher(key)
 	if err != nil {
 		fmt.Println(err)
 	}
 	// 填充
 	paddText := padding(text, block.BlockSize())
-
-	fmt.Println(paddText)
-
-	fmt.Println(len(paddText))
 
 	blockMode := cipher.NewCBCEncrypter(block, iv)
 
@@ -51,7 +46,7 @@ func (s *School) CBCDecrypter(encrypterStr string) (string, error) {
 	blockMode.CryptBlocks(result, encrypter)
 	// 去除填充
 	result = unPadding(result)
-	result = bytes.TrimRight(result,"\x00")
+	result = bytes.TrimRight(result, "\x00")
 	return string(result), nil
 }
 
@@ -60,9 +55,8 @@ func (s *School) CBCDecrypter(encrypterStr string) (string, error) {
 	text：明文内容
 	blockSize：分组块大小
 */
-func padding(plainText []byte, blockSize int) []byte{
-	padding := blockSize - (len(plainText)%blockSize)
-	padText := bytes.Repeat([]byte{0}, padding)
+func padding(plainText []byte, blockSize int) []byte {
+	padText := bytes.Repeat([]byte{0}, blockSize-(len(plainText)%blockSize))
 	newText := append(plainText, padText...)
 	return newText
 }
@@ -73,6 +67,5 @@ func padding(plainText []byte, blockSize int) []byte{
 */
 func unPadding(text []byte) []byte {
 	// 取出填充的数据 以此来获得填充数据长度
-	unPadding := int(text[len(text)-1])
-	return text[:(len(text) - unPadding)]
+	return text[:(len(text) - int(text[len(text)-1]))]
 }
