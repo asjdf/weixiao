@@ -63,7 +63,7 @@ func (s *School) CardInfoUpdate(r *ReqCardInfoUpdate) (err error) {
 
 	rByte, _ := json.Marshal(r)
 	fmt.Println(string(rByte))
-	encrypt, err := s.aesEncrypt(rByte)
+	encrypt := s.CBCEncrypter(rByte)
 	if err != nil {
 		return
 	}

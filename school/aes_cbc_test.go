@@ -1,26 +1,21 @@
 package school
 
 import (
-	"encoding/json"
 	"fmt"
 	"testing"
 )
 
 func TestAes(t *testing.T) {
 	cfg := Config{
-		AppKey:    "777777777777",
-		AppSecret: "12345678901234567890123456789012",
-		Ocode:     "1234567890",
+		AppKey:    "1234567890123456",
+		AppSecret: "0123456789123456",
+		Ocode:     "",
 	}
 	sch := NewSchool(&cfg)
 
-	// 生成主动更新卡数据的请求
-	req := sch.NewCardInfoUpdateReq("balance").AddData("cardNum", "1")
-	// 主动更新卡数据
-	b, _ := json.Marshal(&req)
-	encrypt := sch.CBCEncrypter(b)
+	encrypt := sch.CBCEncrypter([]byte("12345"))
 	fmt.Println(encrypt)
 
-	decrypt, _ := sch.CBCDecrypter(encrypt)
+	decrypt, _ := sch.CBCDecrypter("90b2c15e84cb78e5161f42867807c4bc")
 	fmt.Println(decrypt)
 }
