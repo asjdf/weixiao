@@ -6,13 +6,10 @@ import (
 	"weixiao/school"
 )
 
+
 func TestSchool(t *testing.T) {
-	cfg := school.Config{
-		AppKey:    "xxx",
-		AppSecret: "xxx",
-		Ocode:     "xxx",
-	}
-	sch := school.NewSchool(&cfg)
+	cfg := school.GetConf()
+	sch := school.NewSchool(cfg)
 
 	// 生成主动更新卡数据的请求
 	req := sch.NewCardInfoUpdateReq("balance").AddData("cardNum", "1")

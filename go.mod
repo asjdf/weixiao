@@ -15,7 +15,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/smartystreets/goconvey v1.7.2 // indirect
-	golang.org/x/net v0.0.0-20211123203042-d83791d6bcd9 // indirect
+	golang.org/x/net v0.0.0-20211201190559-0a0e4e1bb54c // indirect
 	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
 	moul.io/http2curl v1.0.0 // indirect
 )
