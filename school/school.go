@@ -1,11 +1,5 @@
 package school
 
-import (
-	"gopkg.in/yaml.v3"
-	"io/ioutil"
-	"log"
-)
-
 type Config struct {
 	AppKey    string
 	AppSecret string
@@ -22,16 +16,3 @@ func NewSchool(cfg *Config) *School {
 	return &School{conf: cfg, AccessTokenHandle: defaultAkHandle}
 }
 
-func GetConf() *Config {
-	c := new(Config)
-	yamlFile, err := ioutil.ReadFile("application.yaml")
-	if err != nil {
-		log.Printf("yamlFile.Get err   #%v ", err)
-	}
-
-	err = yaml.Unmarshal(yamlFile, &c)
-	if err != nil {
-		log.Fatalf("Unmarshal: %v", err)
-	}
-	return c
-}
