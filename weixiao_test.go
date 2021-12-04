@@ -7,11 +7,11 @@ import (
 )
 
 
-func TestSchool1(t *testing.T) {
+func TestSchool(t *testing.T) {
 	cfg := school.Config{
-		AppKey:    "7F7B3C6A55220EE8",
-		AppSecret: "E5B59272DD2E95B21D02B9C9778104F0",
-		Ocode:     "4133010336",
+		AppKey:    "xxxxx",
+		AppSecret: "xxxxxx",
+		Ocode:     "xx",
 	}
 	sch := school.NewSchool(&cfg)
 
