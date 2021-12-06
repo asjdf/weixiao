@@ -7,12 +7,12 @@ type Config struct {
 }
 
 type School struct {
-	conf *Config
+	Conf *Config
 	AccessTokenHandle
 }
 
 func NewSchool(cfg *Config) *School {
 	defaultAkHandle := NewAccessTokenHandle(cfg)
-	return &School{conf: cfg, AccessTokenHandle: defaultAkHandle}
+	return &School{Conf: cfg, AccessTokenHandle: defaultAkHandle}
 }
 

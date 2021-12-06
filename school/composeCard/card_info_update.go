@@ -1,7 +1,7 @@
 // 用户卡面信息项主动更新
 // https://wiki.weixiao.qq.com/api/school/cardInfoUpdate.html
 
-package school
+package composeCard
 
 import (
 	"encoding/json"
@@ -40,9 +40,9 @@ type ResMsg struct {
 }
 
 // NewCardInfoUpdateReq 生成更新卡信息请求 cardField为需要更新的信息项: 余额balance,图书借阅borrow,补贴subsidy,餐次mealtimes
-func (s School) NewCardInfoUpdateReq(cardField string) *ReqCardInfoUpdate {
+func (s *ComposeCard) NewCardInfoUpdateReq(cardField string) *ReqCardInfoUpdate {
 	return &ReqCardInfoUpdate{
-		AppKey:    s.conf.AppKey,
+		AppKey:    s.Conf.AppKey,
 		CardField: cardField,
 		CardInfo:  make([]UpdateInfo, 0),
 	}
@@ -57,7 +57,7 @@ func (r *ReqCardInfoUpdate) AddData(cardNum, value string) *ReqCardInfoUpdate {
 }
 
 // CardInfoUpdate 发送主动更新卡数据的请求 todo：剥离请求部分
-func (s *School) CardInfoUpdate(r *ReqCardInfoUpdate) (err error) {
+func (s *ComposeCard) CardInfoUpdate(r *ReqCardInfoUpdate) (err error) {
 	r.NonceStr = util.RandStr(32)
 	r.Timestamp = strconv.FormatInt(time.Now().Unix(), 10)
 
@@ -68,7 +68,7 @@ func (s *School) CardInfoUpdate(r *ReqCardInfoUpdate) (err error) {
 	}
 	req := &ReqRawData{
 		RawData: encrypt,
-		AppKey:  s.conf.AppKey,
+		AppKey:  s.Conf.AppKey,
 	}
 	res := ResMsg{}
 	_, _, errs := gorequest.New().Post(CardInfoUpdateApi).Send(req).EndStruct(&res)
