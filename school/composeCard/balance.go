@@ -1,4 +1,4 @@
-package school
+package composeCard
 
 /*
 error code
@@ -12,6 +12,7 @@ error code
 import (
 	"encoding/json"
 	"fmt"
+
 	"weixiao/util"
 )
 import "github.com/gin-gonic/gin"
@@ -26,7 +27,9 @@ type CardInfo struct {
 	Value      float64 `json:"value"`
 }
 
-func (s School) balanceReqHandle(f func(cards []string) []CardInfo) func(c *gin.Context) {
+func (s *ComposeCard) balanceReqHandle(f func(cards []string) []CardInfo) func(c *gin.Context) {
+	// https://wiki.weixiao.qq.com/api/school/balance.html
+
 	return func(c *gin.Context) {
 		var balReq balanceReq
 		cardNum := make([]string, 0)
@@ -41,7 +44,7 @@ func (s School) balanceReqHandle(f func(cards []string) []CardInfo) func(c *gin.
 			return
 		}
 		// check the appKey
-		if balReq.AppKey != s.conf.AppKey {
+		if balReq.AppKey != s.Conf.AppKey {
 			c.JSON(util.MakeErrorReturn("appkey is not equal", 40002))
 			return
 		}
