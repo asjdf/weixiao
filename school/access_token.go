@@ -30,7 +30,6 @@ type ReqAccessToken struct {
 type ResAccessToken struct {
 	ErrorDescription string `json:"error_description"`
 	Error            string `json:"error"`
-
 	TokenType   string `json:"token_type"`
 	AccessToken string `json:"access_token"`
 	Ocode       string `json:"ocode"`      // 学校代号
