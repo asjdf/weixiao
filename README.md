@@ -13,7 +13,7 @@ WeiXiao SDK for Go   （腾讯微校SDK）
 ## school
 
 ### 身份认证
- - [ ] 账号+密码验证（接口对接）
+ - [x] 账号+密码验证（接口对接）
  - [ ] 跳转校企页面认证
  - [ ] 姓名+证件号验证（接口对接）
 
@@ -29,3 +29,11 @@ WeiXiao SDK for Go   （腾讯微校SDK）
  ### 校园码
   - [x] 校园码解码
   - [ ] 校园码扫码事件回调
+
+### 错误代码
+error code
+40001 bind error
+40002 appkey is not equal
+40003 CBCDecrypter error
+40004 Unmarshal error
+40005 marshal error

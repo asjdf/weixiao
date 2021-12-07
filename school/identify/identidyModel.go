@@ -1,6 +1,6 @@
 package identify
 
-type PeopleDetails struct {
+type PeopleDetail struct {
 	CardNumber         string `json:"card_number"`
 	Gender             string `json:"gender"`
 	HeadImage          string `json:"head_image"`
