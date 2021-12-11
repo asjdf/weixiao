@@ -15,3 +15,4 @@ func NewSchool(cfg *Config) *School {
 	defaultAkHandle := NewAccessTokenHandle(cfg)
 	return &School{Conf: cfg, AccessTokenHandle: defaultAkHandle}
 }
+
